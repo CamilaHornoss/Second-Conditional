@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Second conditional: si pasara algo, haría esto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F4F6FB;--surf:#fff;--ink:#1B2038;--mute:#5A6180;--line:#DDE2F0;--if:#2450E0;--ifbg:#E3EAFF;--wd:#C42766;--wdbg:#FFE3EE;--ok:#117A4D;--okbg:#DDF5E8;--bad:#B3261E;--badbg:#FDE4E2;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12152A;--surf:#1B2040;--ink:#EEF0FA;--mute:#A3AAC8;--line:#2D3361;--if:#8FB0FF;--ifbg:#232C5E;--wd:#FF8FBA;--wdbg:#4A2040;--ok:#6EE0A6;--okbg:#17382B;--bad:#FF9A93;--badbg:#472122;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#12152A;--surf:#1B2040;--ink:#EEF0FA;--mute:#A3AAC8;--line:#2D3361;--if:#8FB0FF;--ifbg:#232C5E;--wd:#FF8FBA;--wdbg:#4A2040;--ok:#6EE0A6;--okbg:#17382B;--bad:#FF9A93;--badbg:#472122;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.0625rem;line-height:1.6;-webkit-text-size-adjust:100%}
+main{max-width:40rem;margin:0 auto;padding:1.25rem 1.25rem 3rem}
+h1,h2{font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;line-height:1.1;margin:0}
+h1{font-weight:800;font-size:clamp(2rem,9vw,3rem);letter-spacing:-.02em}
+h2{font-weight:800;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.75rem}
+p{margin:.6rem 0}
+section{padding:2.25rem 0 0}
+.lead{color:var(--mute);margin-top:.75rem}
+.if{background:var(--ifbg);color:var(--if);border-radius:.4rem;padding:.05em .35em;font-weight:700}
+.wd{background:var(--wdbg);color:var(--wd);border-radius:.4rem;padding:.05em .35em;font-weight:700}
+.hero{background:var(--surf);border:2px solid var(--line);border-radius:1.25rem;padding:1.25rem;margin-top:1.5rem}
+.hero .en{font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;font-weight:600;font-size:clamp(1.5rem,6.5vw,2.1rem);line-height:1.35;min-height:6.2em}
+.hero .es{color:var(--mute);min-height:3.2em;margin-top:.5rem}
+button{font:inherit;cursor:pointer;color:inherit}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:2rem;padding:.75rem 1.4rem;font-weight:700;min-height:44px}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--line)}
+button:focus-visible,summary:focus-visible{outline:3px solid var(--if);outline-offset:2px}
+.formula{background:var(--surf);border:2px solid var(--line);border-radius:1rem;padding:1rem;margin:1rem 0}
+.formula .row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;font-weight:700;font-size:1.1rem}
+.formula small{display:block;color:var(--mute);margin-top:.6rem;font-weight:400;font-size:.95rem}
+.uses{padding-left:1.1rem}.uses li{margin:.5rem 0}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:20rem;background:var(--surf);border-radius:1rem}
+th,td{text-align:left;padding:.7rem .8rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Bricolage Grotesque",system-ui,sans-serif}
+details{background:var(--surf);border:2px solid var(--line);border-radius:1rem;padding:.2rem 1rem;margin:.6rem 0}
+summary{cursor:pointer;font-weight:700;padding:.7rem 0;min-height:44px}
+.bad{color:var(--bad);font-weight:700}.good{color:var(--ok);font-weight:700}
+.quiz{background:var(--surf);border:2px solid var(--line);border-radius:1.25rem;padding:1.25rem}
+.qmeta{color:var(--mute);font-size:.95rem;display:flex;justify-content:space-between}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:.4rem 0 1rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--if);transition:width .3s}
+.q{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;font-size:1.35rem;line-height:1.35;margin:.5rem 0 1rem}
+.opt{display:block;width:100%;text-align:left;background:var(--bg);border:2px solid var(--line);border-radius:.9rem;padding:.8rem 1rem;margin:.5rem 0;min-height:48px}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.no{background:var(--badbg);border-color:var(--bad)}
+.fb{margin:.8rem 0;padding:.8rem 1rem;border-radius:.9rem;background:var(--bg)}
+.score{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:3rem;margin:.2rem 0}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+[hidden]{display:none!important}
+.tabs{display:flex;gap:.5rem;margin-bottom:1.25rem}
+.tab{flex:1;text-align:center;text-decoration:none;color:var(--ink);border:2px solid var(--line);border-radius:2rem;padding:.65rem;min-height:44px;font-weight:700;background:var(--surf)}
+.tab[aria-current="page"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab:focus-visible{outline:3px solid var(--if);outline-offset:2px}
+a.btn{display:inline-block;text-decoration:none}
+.fi{margin:.9rem 0;line-height:2.2}
+.fi input{font:inherit;width:7.5rem;padding:.3rem .6rem;border:2px solid var(--line);border-radius:.6rem;background:var(--bg);color:var(--ink);min-height:44px}
+.fi input.ok{border-color:var(--ok);background:var(--okbg)}.fi input.no{border-color:var(--bad);background:var(--badbg)}
+.hint{color:var(--mute)}.fr{display:block;font-size:.95rem;line-height:1.3;color:var(--mute)}
+.ans,.pool{display:flex;flex-wrap:wrap;gap:.5rem;padding:.7rem;border-radius:.9rem;margin:.6rem 0;min-height:3.6rem}
+.ans{border:2px dashed var(--line);align-items:center}
+.chip{border:2px solid var(--line);background:var(--surf);border-radius:.7rem;padding:.5rem .8rem;min-height:44px;font-weight:700}
+.ans .chip{background:var(--ifbg);color:var(--if);border-color:var(--if)}
+.pra h2{margin-top:0}.pra .quiz{margin-bottom:.5rem}
+.sub{color:var(--mute);margin:-.3rem 0 .9rem}
+.lang{flex:0 0 auto;min-width:3.4rem}button.tab{font:inherit;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<nav class="tabs" aria-label="Menu"><a class="tab" href="#explicacion" data-i="tabE"></a><a class="tab" href="#practica" data-i="tabP"></a><button class="tab lang" id="lang" type="button"></button></nav>
+<div id="v-exp">
+<header>
+  <h1 data-i="h1"></h1>
+  <p class="lead" data-i="lead"></p>
+  <div class="hero" aria-live="polite"><div class="en" id="en"></div><div class="es" id="es"></div><button class="btn" id="next" type="button" data-i="hb"></button></div>
+</header>
+<section data-i="how"></section>
+<section data-i="uses"></section>
+<section data-i="were"></section>
+<section data-i="mod"></section>
+<section data-i="err"></section>
+<section data-i="go"></section>
+</div>
+<div id="v-pra" class="pra" hidden>
+  <h1 data-i="ph"></h1>
+  <p class="lead" data-i="pl"></p>
+  <section><div data-i="e1"></div><div class="quiz" id="quiz" aria-live="polite"></div></section>
+  <section><div data-i="e2"></div><div class="quiz" id="fill" aria-live="polite"></div></section>
+  <section><div data-i="e3"></div><div class="quiz" id="order" aria-live="polite"></div></section>
+  <section><div data-i="e4"></div><div class="quiz" id="trans" aria-live="polite"></div></section>
+</div>
+</main>
+<script>
+(function(){
+var D={
+es:{title:"Second conditional: si pasara algo, haría esto",sw:"Switch to English",tabE:"Explicación",tabP:"Práctica",h1:"Second conditional",
+lead:"Se usa para hablar de cosas que <b>no son reales</b> o son muy poco probables, y de lo que pasaría si lo fueran. En español: “Si tuviera…, haría…”.",hb:"Otro ejemplo",
+how:`<h2>Cómo se arma</h2><div class="formula"><div class="row"><span class="if">If</span><span class="if">+ past simple</span><span>,</span><span class="wd">would</span><span class="wd">+ verbo base</span></div><small>Se puede invertir el orden. Si empezás con “if”, va coma. Si empezás con “would”, no.</small></div><p><span class="if">If I had a car</span>, <span class="wd">I would drive</span> to work.</p><p><span class="wd">I would drive</span> to work <span class="if">if I had a car</span>.</p><p>Aunque la parte del “if” está en pasado, <b>no habla del pasado</b>: habla del presente o del futuro imaginario.</p>`,
+uses:`<h2>Cuándo usarlo</h2><ul class="uses"><li><b>Situaciones imaginarias:</b> <i>If I were a bird, I would fly over the city.</i> (Si fuera un pájaro…)</li><li><b>Cosas improbables:</b> <i>If I won the lottery, I would quit my job.</i> (Si ganara la lotería…)</li><li><b>Consejos:</b> <i>If I were you, I would talk to her.</i> (Yo que vos, hablaría con ella.)</li></ul>`,
+were:`<h2>Con “be”: siempre “were”</h2><p>En este condicional, con <b>todas</b> las personas se usa <span class="if">were</span>: <i>If I were, if he were, if she were, if it were</i>. En la conversación informal también se escucha “was”, pero “were” es la forma correcta y la que piden en los exámenes.</p>`,
+mod:`<h2>Variantes con could y might</h2><div class="tbl"><table><tr><th>Verbo</th><th>Significado</th><th>Ejemplo</th></tr><tr><td><span class="wd">would</span></td><td>haría (seguro)</td><td>If I had time, I would learn guitar.</td></tr><tr><td><span class="wd">could</span></td><td>podría</td><td>If I had time, I could learn guitar.</td></tr><tr><td><span class="wd">might</span></td><td>quizás haría</td><td>If I had time, I might learn guitar.</td></tr></table></div>`,
+err:`<h2>Errores comunes</h2><details><summary>Poner “would” después de “if”</summary><p><span class="bad">✗</span> If I would have money, I would travel.</p><p><span class="good">✓</span> If I <b>had</b> money, I would travel.</p><p>El “would” va solo en la parte del resultado, nunca en la del “if”.</p></details><details><summary>Usar el presente en la parte del “if”</summary><p><span class="bad">✗</span> If I know the answer, I would tell you.</p><p><span class="good">✓</span> If I <b>knew</b> the answer, I would tell you.</p><p>Con presente + will tenés el first conditional, que es para cosas posibles y reales.</p></details><details><summary>Confundirlo con el first conditional</summary><p><b>First:</b> If it rains, I <i>will stay</i> home. (puede pasar)</p><p><b>Second:</b> If it rained, I <i>would stay</i> home. (es hipotético o improbable)</p></details><details><summary>Contracciones</summary><p>En la conversación: <i>I’d</i> = I would, <i>wouldn’t</i> = would not. Ejemplo: If I were rich, I’d buy an island.</p></details>`,
+go:`<h2>¿Listo para practicar?</h2><p>Hay cuatro tipos de ejercicios en una sección aparte.</p><a class="btn" href="#practica">Ir a practicar</a>`,
+ph:"Práctica",pl:"Cuatro ejercicios para usar el second conditional. Podés repetirlos las veces que quieras.",
+e1:`<h2>1. Test rápido</h2><p class="sub">Elegí la opción correcta.</p>`,e2:`<h2>2. Completá la oración</h2><p class="sub">Escribí el verbo entre paréntesis en la forma correcta.</p>`,
+e3:`<h2>3. Ordená las palabras</h2><p class="sub">Armá la oración en inglés tocando las palabras en orden.</p>`,e4:`<h2>4. Del español al inglés</h2><p class="sub">Elegí la traducción correcta.</p>`,
+of:"de",ok:"Correcto. ",no:"Casi. ",nxt:"Siguiente",see:"Ver resultado",res:"Resultado",again:"Repetir",check:"Comprobar",clear:"Borrar",fok:"Correcto",ans:"Respuesta: ",was:"Era: ",tap:"Tocá las palabras en orden",perf:"¡Perfecto!",rev:"Revisá las que quedaron en rojo y probá de nuevo.",good:" correctas.",op:""},
+en:{title:"Second conditional: if this happened, I would do that",sw:"Cambiar a español",tabE:"Explanation",tabP:"Practice",h1:"Second conditional",
+lead:"We use it to talk about things that are <b>not real</b> or very unlikely, and what would happen if they were true.",hb:"Another example",
+how:`<h2>How to build it</h2><div class="formula"><div class="row"><span class="if">If</span><span class="if">+ past simple</span><span>,</span><span class="wd">would</span><span class="wd">+ base verb</span></div><small>You can swap the order. With “if” first, use a comma. With “would” first, no comma.</small></div><p><span class="if">If I had a car</span>, <span class="wd">I would drive</span> to work.</p><p><span class="wd">I would drive</span> to work <span class="if">if I had a car</span>.</p><p>Even though the “if” part is in the past tense, it is <b>not about the past</b>: it describes an imaginary present or future.</p>`,
+uses:`<h2>When to use it</h2><ul class="uses"><li><b>Imaginary situations:</b> <i>If I were a bird, I would fly over the city.</i></li><li><b>Unlikely things:</b> <i>If I won the lottery, I would quit my job.</i></li><li><b>Advice:</b> <i>If I were you, I would talk to her.</i></li></ul>`,
+were:`<h2>With “be”: always “were”</h2><p>In the second conditional, use <span class="if">were</span> with <b>every</b> person: <i>If I were, if he were, if she were, if it were</i>. In casual speech you will also hear “was”, but “were” is the standard form and the one exams expect.</p>`,
+mod:`<h2>Variants with could and might</h2><div class="tbl"><table><tr><th>Verb</th><th>Meaning</th><th>Example</th></tr><tr><td><span class="wd">would</span></td><td>would for sure</td><td>If I had time, I would learn guitar.</td></tr><tr><td><span class="wd">could</span></td><td>would be able to</td><td>If I had time, I could learn guitar.</td></tr><tr><td><span class="wd">might</span></td><td>maybe would</td><td>If I had time, I might learn guitar.</td></tr></table></div>`,
+err:`<h2>Common mistakes</h2><details><summary>Putting “would” after “if”</summary><p><span class="bad">✗</span> If I would have money, I would travel.</p><p><span class="good">✓</span> If I <b>had</b> money, I would travel.</p><p>“Would” goes only in the result part, never in the “if” part.</p></details><details><summary>Using the present in the “if” part</summary><p><span class="bad">✗</span> If I know the answer, I would tell you.</p><p><span class="good">✓</span> If I <b>knew</b> the answer, I would tell you.</p><p>Present + will is the first conditional, which is for possible, real situations.</p></details><details><summary>Mixing it up with the first conditional</summary><p><b>First:</b> If it rains, I <i>will stay</i> home. (it might happen)</p><p><b>Second:</b> If it rained, I <i>would stay</i> home. (hypothetical or unlikely)</p></details><details><summary>Contractions</summary><p>In conversation: <i>I’d</i> = I would, <i>wouldn’t</i> = would not. Example: If I were rich, I’d buy an island.</p></details>`,
+go:`<h2>Ready to practice?</h2><p>There are four types of exercises in a separate section.</p><a class="btn" href="#practica">Go to practice</a>`,
+ph:"Practice",pl:"Four exercises to use the second conditional. Repeat them as many times as you like.",
+e1:`<h2>1. Quick test</h2><p class="sub">Choose the correct option.</p>`,e2:`<h2>2. Complete the sentence</h2><p class="sub">Write the verb in brackets in the correct form.</p>`,
+e3:`<h2>3. Put the words in order</h2><p class="sub">Build the sentence by tapping the words in order.</p>`,e4:`<h2>4. Spot the correct sentence</h2><p class="sub">Choose the sentence with the correct grammar.</p>`,
+of:"of",ok:"Correct. ",no:"Not quite. ",nxt:"Next",see:"See result",res:"Result",again:"Try again",check:"Check",clear:"Clear",fok:"Correct",ans:"Answer: ",was:"It was: ",tap:"Tap the words in order",perf:"Perfect!",rev:"Check the red ones and try again.",good:" correct.",op:"Put the words in order."}
+};
+var lang="es";
+try{var sv=localStorage.getItem("lang");if(sv==="es"||sv==="en")lang=sv}catch(e){}
+function t(k){return D[lang][k]}
+function L(x){return typeof x==="string"?x:x[lang]}
+function sh(a){a=a.slice();for(var k=a.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),x=a[k];a[k]=a[j];a[j]=x}return a}
+
+var ex=[
+ {i:"If I had a million dollars",w:"I would travel the world",es:"Si tuviera un millón de dólares, viajaría por el mundo."},
+ {i:"If she were taller",w:"she would play basketball",es:"Si ella fuera más alta, jugaría al básquet."},
+ {i:"If we lived by the sea",w:"we would swim every day",es:"Si viviéramos cerca del mar, nadaríamos todos los días."},
+ {i:"If I were you",w:"I would take the job",es:"Yo que vos, aceptaría el trabajo."},
+ {i:"If it didn’t rain so much",w:"I would walk to school",es:"Si no lloviera tanto, iría caminando a la escuela."},
+ {i:"If they had more time",w:"they would learn Japanese",es:"Si tuvieran más tiempo, aprenderían japonés."}
+],n=0,heroEn=document.getElementById("en"),heroEs=document.getElementById("es");
+function hero(){var e=ex[n];heroEn.innerHTML='<span class="if">'+e.i+'</span>, <span class="wd">'+e.w+'</span>.';heroEs.textContent=e.es;heroEs.hidden=lang==="en"}
+document.getElementById("next").addEventListener("click",function(){n=(n+1)%ex.length;hero()});
+
+var Q=[
+ {q:"If I ___ more money, I would buy a house.",o:["had","have","would have"],e:{es:"Después de “if” va el past simple: had.",en:"After “if” we use the past simple: had."}},
+ {q:"She would travel the world if she ___ rich.",o:["were","is","would be"],e:{es:"Con todas las personas se usa “were”.",en:"We use “were” with every person."}},
+ {q:"If I ___ you, I would talk to him.",o:["were","am","would be"],e:{es:"Para dar un consejo: If I were you, I would…",en:"For advice: If I were you, I would…"}},
+ {q:"What would you do if you ___ the lottery?",o:["won","win","would win"],e:{es:"El “if” lleva past simple: won.",en:"The “if” part takes the past simple: won."}},
+ {q:"If it ___ raining, we would go out.",o:["weren’t","wouldn’t be","won’t be"],e:{es:"“Weren’t” es el pasado de “be”.",en:"“Weren’t” is the past of “be”."}},
+ {q:{es:"¿Cuál oración es correcta?",en:"Which sentence is correct?"},o:["If I knew, I would tell you.","If I know, I would tell you.","If I would know, I would tell you."],e:{es:"If + past simple, would + verbo base.",en:"If + past simple, would + base verb."}}
+];
+var TR={es:[
+ {q:"Si tuviera tiempo, viajaría más.",o:["If I had time, I would travel more.","If I have time, I would travel more.","If I would have time, I travel more."],e:"If + past simple, would + verbo base."},
+ {q:"Yo que vos, no iría.",o:["If I were you, I wouldn’t go.","If I am you, I wouldn’t go.","If I would be you, I don’t go."],e:"Para dar consejos: “If I were you, I would…”."},
+ {q:"¿Qué harías si ganaras la lotería?",o:["What would you do if you won the lottery?","What will you do if you won the lottery?","What do you do if you would win the lottery?"],e:"Would en la pregunta y “won” (past simple) después de “if”."},
+ {q:"Ella ayudaría si pudiera.",o:["She would help if she could.","She will help if she could.","She would help if she can."],e:"En el “if” el verbo va en pasado: could."},
+ {q:"Si no estuviera cansado, saldría con vos.",o:["If I weren’t tired, I would go out with you.","If I wouldn’t be tired, I go out with you.","If I am not tired, I would go out with you."],e:"“Weren’t” es el pasado de “be”."}
+],en:[
+ {q:"Which sentence is correct?",o:["If she had a car, she would drive to work.","If she would have a car, she would drive to work.","If she has a car, she would drive to work."],e:"If + past simple, would + base verb."},
+ {q:"Which sentence is correct?",o:["I would help you if I could.","I will help you if I could.","I would help you if I can."],e:"The verb in the “if” part is in the past: could."},
+ {q:"Which sentence is correct?",o:["If I were you, I wouldn’t go.","If I am you, I wouldn’t go.","If I would be you, I don’t go."],e:"For advice: “If I were you, I would…”."},
+ {q:"Which sentence is correct?",o:["What would you do if you won the lottery?","What will you do if you won the lottery?","What do you do if you would win the lottery?"],e:"Would in the question and “won” (past simple) after “if”."},
+ {q:"Which sentence is correct?",o:["If we weren’t tired, we would go out.","If we wouldn’t be tired, we go out.","If we aren’t tired, we would go out."],e:"“Weren’t” is the past of “be”."}
+]};
+var F=[
+ {t:"If she (be) here, she would help us.",a:"were"},
+ {t:"We would go to the beach if the weather (be) nicer.",a:"were"},
+ {t:"If you (study) more, you would pass the exam.",a:"studied"},
+ {t:"What would you do if you (see) a ghost?",a:"saw"},
+ {t:"If I (live) in Tokyo, I would eat ramen every day.",a:"lived"},
+ {t:"They would be happier if they (not work) so much.",a:"didn't work"}
+];
+var U=[
+ {t:"If I were rich, I would buy a boat.",es:"Si fuera rico, compraría un bote."},
+ {t:"She would be happier if she lived by the sea.",es:"Ella sería más feliz si viviera cerca del mar."},
+ {t:"If we had more time, we could visit Seoul.",es:"Si tuviéramos más tiempo, podríamos visitar Seúl."},
+ {t:"What would you do if you were me?",es:"¿Qué harías si fueras yo?"}
+];
+
+function mc(id,items){
+  var box=document.getElementById(id),i=0,s=0,done=false;
+  function r(){
+    if(i>=items.length){
+      box.innerHTML='<div class="qmeta">'+t("res")+'</div><div class="score">'+s+' / '+items.length+'</div><button class="btn alt" type="button" id="'+id+'r">'+t("again")+'</button>';
+      document.getElementById(id+"r").onclick=function(){i=0;s=0;r()};return;
+    }
+    var c=items[i];done=false;
+    var h='<div class="qmeta"><span>'+(i+1)+' '+t("of")+' '+items.length+'</span></div><p class="q">'+L(c.q)+'</p>';
+    sh(c.o).forEach(function(x){h+='<button class="opt" type="button">'+x+'</button>'});
+    box.innerHTML=h+'<div class="fbx"></div>';
+    box.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){
+      if(done)return;done=true;
+      var ok=b.textContent===c.o[0];if(ok)s++;
+      box.querySelectorAll(".opt").forEach(function(x){x.disabled=true;if(x.textContent===c.o[0])x.classList.add("ok");else if(x===b)x.classList.add("no")});
+      box.querySelector(".fbx").innerHTML='<div class="fb"><b>'+(ok?t("ok"):t("no"))+'</b>'+L(c.e)+'</div><button class="btn" type="button" id="'+id+'n">'+(i===items.length-1?t("see"):t("nxt"))+'</button>';
+      document.getElementById(id+"n").onclick=function(){i++;r()};
+    }});
+  }
+  r();
+}
+
+function fill(){
+  var fb=document.getElementById("fill");
+  function fr(){
+    var h='';
+    F.forEach(function(f,k){
+      var m=f.t.match(/^(.*)\(([^)]+)\)(.*)$/);
+      h+='<p class="fi">'+m[1]+'<input type="text" id="f'+k+'" autocapitalize="none" autocomplete="off" autocorrect="off" spellcheck="false" aria-label="'+(k+1)+'"> <span class="hint">('+m[2]+')</span>'+m[3]+'<span class="fr" id="r'+k+'"></span></p>';
+    });
+    h+='<button class="btn" type="button" id="fc">'+t("check")+'</button> <button class="btn alt" type="button" id="fx">'+t("clear")+'</button><div class="fb" id="fs" hidden></div>';
+    fb.innerHTML=h;
+    document.getElementById("fc").onclick=function(){
+      var n=0;
+      F.forEach(function(f,k){
+        var inp=document.getElementById("f"+k),r=document.getElementById("r"+k);
+        var v=inp.value.trim().toLowerCase().replace(/\u2019/g,"'").replace(/\s+/g," ");
+        var ok=v===f.a;if(ok)n++;
+        inp.className=ok?"ok":"no";
+        r.textContent=ok?t("fok"):t("ans")+f.a.replace("'","\u2019");
+      });
+      var s=document.getElementById("fs");s.hidden=false;
+      s.innerHTML='<b>'+n+' '+t("of")+' '+F.length+t("good")+'</b> '+(n===F.length?t("perf"):t("rev"));
+    };
+    document.getElementById("fx").onclick=fr;
+  }
+  fr();
+}
+
+function order(){
+  var ob=document.getElementById("order"),ui=0,us=0;
+  function ur(){
+    if(ui>=U.length){
+      ob.innerHTML='<div class="qmeta">'+t("res")+'</div><div class="score">'+us+' / '+U.length+'</div><button class="btn alt" type="button" id="ur">'+t("again")+'</button>';
+      document.getElementById("ur").onclick=function(){ui=0;us=0;ur()};return;
+    }
+    var tgt=U[ui].t,w=tgt.split(" "),pool=sh(w),ans=[],locked=false;
+    if(pool.join(" ")===tgt)pool=sh(w);
+    function draw(){
+      var h='<div class="qmeta"><span>'+(ui+1)+' '+t("of")+' '+U.length+'</span></div><p class="q">'+(lang==="es"?U[ui].es:t("op"))+'</p><div class="ans">';
+      h+=ans.length?ans.map(function(k){return '<button class="chip" type="button" data-a="'+k+'">'+pool[k]+'</button>'}).join(""):'<span class="hint">'+t("tap")+'</span>';
+      h+='</div><div class="pool">'+pool.map(function(x,k){return ans.indexOf(k)<0?'<button class="chip" type="button" data-p="'+k+'">'+x+'</button>':''}).join("")+'</div>';
+      h+='<button class="btn" type="button" id="oc">'+t("check")+'</button><div id="ofb"></div>';
+      ob.innerHTML=h;
+      if(locked)return;
+      ob.querySelectorAll("[data-p]").forEach(function(b){b.onclick=function(){ans.push(+b.dataset.p);draw()}});
+      ob.querySelectorAll("[data-a]").forEach(function(b){b.onclick=function(){ans.splice(ans.indexOf(+b.dataset.a),1);draw()}});
+      document.getElementById("oc").onclick=function(){
+        var ok=ans.map(function(k){return pool[k]}).join(" ")===tgt;
+        if(ok)us++;locked=true;draw();
+        document.getElementById("oc").remove();
+        document.getElementById("ofb").innerHTML='<div class="fb"><b>'+(ok?t("ok"):t("no"))+'</b>'+(ok?"":t("was")+tgt)+'</div><button class="btn" type="button" id="on">'+(ui===U.length-1?t("see"):t("nxt"))+'</button>';
+        document.getElementById("on").onclick=function(){ui++;ur()};
+      };
+    }
+    draw();
+  }
+  ur();
+}
+
+var ve=document.getElementById("v-exp"),vp=document.getElementById("v-pra");
+function route(){
+  var p=location.hash==="#practica";
+  ve.hidden=p;vp.hidden=!p;
+  document.querySelectorAll("a.tab").forEach(function(a){if((a.getAttribute("href")==="#practica")===p)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  window.scrollTo(0,0);
+}
+function apply(){
+  document.documentElement.lang=lang;document.title=t("title");
+  document.querySelectorAll("[data-i]").forEach(function(e){e.innerHTML=t(e.dataset.i)});
+  var b=document.getElementById("lang");b.textContent=lang==="es"?"EN":"ES";b.setAttribute("aria-label",t("sw"));
+  hero();mc("quiz",Q);fill();order();mc("trans",TR[lang]);
+}
+document.getElementById("lang").addEventListener("click",function(){
+  lang=lang==="es"?"en":"es";
+  try{localStorage.setItem("lang",lang)}catch(e){}
+  apply();
+});
+window.addEventListener("hashchange",route);
+apply();route();
+})();
+</script>
+</body>
+</html>
